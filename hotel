@@ -1,0 +1,68 @@
+rgukt-basar@shivani-naik:~$ sudo mysql
+[sudo] password for rgukt-basar: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.37-0ubuntu0.22.04.3 (Ubuntu)
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database hotel;
+ERROR 1007 (HY000): Can't create database 'hotel'; database exists
+mysql> use hotel
+Database changed
+mysql> select *from rooms;
+ERROR 1146 (42S02): Table 'hotel.rooms' doesn't exist
+mysql> create table rooms(id int auto_increment primary key,room_number varchar(20) not null,availability boolean null default true);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into rooms(room_number)values('100'),('101'),('102'),('103'),('104'),('105'),('106'),('107'),('108'),('109');
+Query OK, 10 rows affected (0.02 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql> create table if not exists users(id int auto_increment primary key,username varchar(50) not null,email varchar(100) not null,password varchar(100)not null);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into users(username,email,password)values('john_doe',john.doe@example.com','password123');
+    '> insert into users(username,email,password)values('john_doe',john.doe@example.com','password123');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@example.com','password123');
+insert into users(username,email,password)values('' at line 1
+mysql> insert into users(username,email,password)values('john_doe',john.doe@gmail.com','password123');
+    '> ;
+    '> 
+[1]+  Stopped                 sudo mysql
+rgukt-basar@shivani-naik:~$ sudo mysql
+[sudo] password for rgukt-basar: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 34
+Server version: 8.0.37-0ubuntu0.22.04.3 (Ubuntu)
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use hotel;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> insert into users(username,email,password)values('shivani','shivani12@gmail.com','password');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> create table if not exists rooms(id int auto_increment primary key,room_number varchar(10)not null,availability boolean not null default true);
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> insert into rooms(room_number,availability)values('101',true),('102',true),('103',true),('104',true),('105',true),('106',true),('107',true),('108',true),('109',true),('110',true);
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+
